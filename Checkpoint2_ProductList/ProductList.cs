@@ -18,9 +18,9 @@ namespace Checkpoint2_ProductList
 		{
 			while (true)
 			{
-				string category = String.Empty;
-				string name = String.Empty;
-				double price;
+				string category;
+				string name;
+				double? price = null;
 				bool exit = false;
 
 				Console.Write(
@@ -91,9 +91,25 @@ namespace Checkpoint2_ProductList
 						exit = true;
 						break;
 					}
-					else if (!String.IsNullOrWhiteSpace(input)) FIXME!!
+					else if (String.IsNullOrWhiteSpace(input))
 					{
-						price = Math.Round(Convert.ToDouble(input), 2);
+						Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Empty values are not allowed.");
+						Console.ResetColor();
+                    }
+					else
+					{
+						if (!Double.TryParse(input, out double value))
+						{
+							Console.ForegroundColor = ConsoleColor.Red;
+							Console.WriteLine("Value must be a number.\nComma separated decimals are allowed.");
+							Console.ResetColor();
+						}
+						else
+						{
+							price = Math.Round(Convert.ToDouble(input));
+							break;
+						}
 					}
 				}
 

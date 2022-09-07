@@ -8,7 +8,7 @@ namespace Checkpoint2_ProductList
 {
     internal class Product
     {
-        public Product(string category, string name, double price)
+        public Product(string category, string name, double? price)
         {
             Category = category;
             Name = name;
@@ -17,6 +17,6 @@ namespace Checkpoint2_ProductList
 
         public string Category { get; set; }
         public string Name { get; set; }
-        public double Price { get; set; }
+        public double? Price { get; set; }
     }
 }
