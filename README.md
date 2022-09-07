@@ -31,7 +31,7 @@ Write a console app which starts by asking the user for:
 - [x] The list should be sorted from low price to high and a sum at the bottom.
 - [x] Make it possible to add more products after presenting the list.
 - [ ] Add Error handling to your console app.
-Refactor your code using "Linq" if possible. https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/
+- [x] Refactor your code using "Linq" if possible. https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/
 
 ### Level 4(Extra)
 
