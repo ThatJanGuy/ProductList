@@ -6,7 +6,7 @@ ProductList myProductList = new ProductList();
 myProductList.Add();
 
 Console.WriteLine();
-myProductList.Display();
+myProductList.Display("jan");
 
 Console.WriteLine("\nWould you like to add more products?");
 while (true)
@@ -24,7 +24,7 @@ while (true)
     {
         Console.Clear();
         myProductList.Add();
-        myProductList.Display();
+        myProductList.Display("jan");
         Console.WriteLine("\nWould you like to add more products?");
 
     }

@@ -13,6 +13,7 @@ namespace Checkpoint2_ProductList
 		}
 
 		private List<Product>? products = new List<Product>();
+		public string? searchTerm = null;
 		
 		public void Add()
 		{
@@ -124,7 +125,7 @@ namespace Checkpoint2_ProductList
 			Console.Clear();
 		}
 
-		public void Display()
+		public void Display(string searchTerm = null)
 		{
 			Console.Write(
 				"Product list:\n" +
@@ -135,7 +136,16 @@ namespace Checkpoint2_ProductList
 			
 			foreach (Product product in sortedProducts)
 			{
-				Console.Write( product.Category.PadRight(10) + product.Name.PadRight(10) + product.Price.ToString().PadRight(17) + "\n");
+				if ( !String.IsNullOrWhiteSpace(searchTerm) && product.Name.Trim().ToLower() == searchTerm.Trim().ToLower())
+				{
+					Console.ForegroundColor= ConsoleColor.Green;
+					Console.Write( product.Category.PadRight(10) + product.Name.PadRight(10) + product.Price.ToString().PadRight(17) + "\n");
+					Console.ResetColor();
+				}
+				else
+				{
+					Console.Write( product.Category.PadRight(10) + product.Name.PadRight(10) + product.Price.ToString().PadRight(17) + "\n");
+				}
 			}
 
 			Console.Write(
