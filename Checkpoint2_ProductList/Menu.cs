@@ -13,9 +13,14 @@ namespace Checkpoint2_ProductList
 
         }
 
-        public List<MenuItem> MenuItems { set; }
+        private List<MenuItem> MenuItems = new List<MenuItem>();
 
-        public void GetMenu(char style = 'p', char order = 'a') 
+        public void AddItem(string returnString, string text, char menuChar, int priority = 0)
+        {
+            MenuItems.Add(new MenuItem(returnString, text, menuChar, priority));
+        }
+
+        public string ShowMenu(char style = 'p', char order = 'a') 
         {
             /* Styles:
              * u: unordered
@@ -26,13 +31,12 @@ namespace Checkpoint2_ProductList
              * a: ascending
              * b: descending
              */
+            foreach(MenuItem item in MenuItems)
+            {
+                Console.WriteLine(" > {0} ({1})", item.text, item.menuChar);
+            }
 
-
-            
+            string choice = 
         }
-
-
-
-
     }
 }
