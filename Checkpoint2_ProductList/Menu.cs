@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Checkpoint2_ProductList
 {
     internal class Menu
@@ -31,12 +32,15 @@ namespace Checkpoint2_ProductList
              * a: ascending
              * b: descending
              */
-            foreach(MenuItem item in MenuItems)
+
+            List<MenuItem> outputList = MenuItems.If(true).OrderBy(i => i.priority).ToList();
+
+            foreach(MenuItem item in outputList)
             {
                 Console.WriteLine(" > {0} ({1})", item.text, item.menuChar);
             }
 
-            string choice = 
+            return "choice";
         }
     }
 }

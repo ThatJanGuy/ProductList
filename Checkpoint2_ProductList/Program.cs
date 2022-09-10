@@ -4,9 +4,11 @@ Console.WriteLine("Let's make a menu!");
 
 Menu menu = new Menu();
 menu.AddItem("search", "Search for a product name", 's', 4);
-menu.AddItem("list", "List all products", 'l', 1);
+menu.AddItem("list", "List all products", 'l', 10);
 
 menu.ShowMenu();
+
+Console.WriteLine();
 
 
 
