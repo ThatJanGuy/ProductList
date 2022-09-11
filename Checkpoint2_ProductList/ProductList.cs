@@ -15,6 +15,9 @@ namespace Checkpoint2_ProductList
 		private List<Product>? products = new List<Product>();
 		public string? searchTerm = null;
 		
+
+		// Add Products to List
+		// Incl. input checking
 		public void Add()
 		{
 			while (true)
@@ -122,6 +125,9 @@ namespace Checkpoint2_ProductList
 			}
 			Console.Clear();
 		}
+
+
+		// Show the product list
 
 		public void Display(string? searchTerm = null)
 		{
