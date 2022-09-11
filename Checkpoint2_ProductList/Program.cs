@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Let's make a  product list.\n");
+﻿using Checkpoint2_ProductList;
+
+Console.WriteLine("Let's make a  product list.\n");
 ProductList myProductList = new ProductList();
 
 myProductList.Add();
@@ -22,7 +24,7 @@ while (true)
     {
         Console.Clear();
         myProductList.Add();
-        myProductList.Display("jan");
+        myProductList.Display();
         Console.WriteLine("\nWould you like to add more products?");
 
     }
@@ -31,3 +33,4 @@ while (true)
         break;
     }
 } 
+

@@ -125,30 +125,21 @@ namespace Checkpoint2_ProductList
 
 		public void Display(string? searchTerm = null)
 		{
+			List<Product> sortedProducts = products.OrderBy(p => p.Price).ToList();
+
 			Console.Write(
 				"Product list:\n" +
-                "------------------------------\n" +
-				"CATEGORY".PadRight(10) + "NAME".PadRight(10) + "PRICE".PadLeft(10) + "\n");
-
-			List<Product> sortedProducts = products.OrderBy(p => p.Price).ToList();
+                "-------------------------------------------------------------------\n" +
+				"CATEGORY".PadRight(20) + " | " + "NAME".PadRight(20) + " | " + "PRICE".PadLeft(20) + "\n");
 			
 			foreach (Product product in sortedProducts)
 			{
-				if ( !String.IsNullOrWhiteSpace(searchTerm) && product.Name.Trim().ToLower() == searchTerm.Trim().ToLower())
-				{
-					Console.ForegroundColor= ConsoleColor.Green;
-					Console.Write($"{product.Category, -10}{product.Name, -10}{product.Price, 10:N2}\n");
-					Console.ResetColor();
-				}
-				else
-				{
-					Console.Write($"{product.Category, -10}{product.Name, -10}{product.Price, 10:N2}\n");
-				}
+				Console.Write($"{product.Category, -20} | {product.Name, -20} | {product.Price, 20:N2}\n");
 			}
 
-			Console.Write("------------------------------\n");
-			Console.Write($"TOTAL:{products.Sum(product => product.Price), 24:N2}\n");
-			Console.Write("==============================\n");
+			Console.Write("-------------------------------------------------------------------\n");
+			Console.Write($"TOTAL:{products.Sum(product => product.Price), 60:N2}\n");
+			Console.Write("===================================================================\n");
 		}
 	}
 }
