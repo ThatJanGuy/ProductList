@@ -21,7 +21,7 @@ namespace Checkpoint2_ProductList
 			{
 				string category;
 				string name;
-				double? price = null;
+				decimal price = 0;
 				bool exit = false;
 
 				Console.Write(
@@ -29,8 +29,7 @@ namespace Checkpoint2_ProductList
 					"--------------------------------\n");
 				while (true)
 				{
-					Console.Write(
-						"Category".PadRight(10) + "> ");
+					Console.Write("Category".PadRight(10) + "> ");
 					category = Console.ReadLine();
 
 					if (String.IsNullOrWhiteSpace(category))
@@ -57,8 +56,7 @@ namespace Checkpoint2_ProductList
 				
 				while (true)
 				{
-					Console.Write(
-						"Name".PadRight(10) + "> ");
+					Console.Write("Name".PadRight(10) + "> ");
 					name = Console.ReadLine();
 
 					if (String.IsNullOrWhiteSpace(name))
@@ -100,7 +98,7 @@ namespace Checkpoint2_ProductList
                     }
 					else
 					{
-						if (!Double.TryParse(input, out double value))
+						if (!Decimal.TryParse(input, out decimal value))
 						{
 							Console.ForegroundColor = ConsoleColor.Red;
 							Console.WriteLine("Value must be a number.\nComma separated decimals are allowed.");
@@ -108,7 +106,7 @@ namespace Checkpoint2_ProductList
 						}
 						else
 						{
-							price = Math.Round(Convert.ToDouble(input));
+							price = Convert.ToDecimal(input);
 							break;
 						}
 					}
@@ -125,12 +123,12 @@ namespace Checkpoint2_ProductList
 			Console.Clear();
 		}
 
-		public void Display(string searchTerm = null)
+		public void Display(string? searchTerm = null)
 		{
 			Console.Write(
 				"Product list:\n" +
-                "-----------------------------\n" +
-				"CATEGORY".PadRight(10) + "NAME".PadRight(10) + "PRICE".PadRight(10) + "\n");
+                "------------------------------\n" +
+				"CATEGORY".PadRight(10) + "NAME".PadRight(10) + "PRICE".PadLeft(10) + "\n");
 
 			List<Product> sortedProducts = products.OrderBy(p => p.Price).ToList();
 			
@@ -139,19 +137,18 @@ namespace Checkpoint2_ProductList
 				if ( !String.IsNullOrWhiteSpace(searchTerm) && product.Name.Trim().ToLower() == searchTerm.Trim().ToLower())
 				{
 					Console.ForegroundColor= ConsoleColor.Green;
-					Console.Write( product.Category.PadRight(10) + product.Name.PadRight(10) + product.Price.ToString().PadRight(17) + "\n");
+					Console.Write($"{product.Category, -10}{product.Name, -10}{product.Price, 10:N2}\n");
 					Console.ResetColor();
 				}
 				else
 				{
-					Console.Write( product.Category.PadRight(10) + product.Name.PadRight(10) + product.Price.ToString().PadRight(17) + "\n");
+					Console.Write($"{product.Category, -10}{product.Name, -10}{product.Price, 10:N2}\n");
 				}
 			}
 
-			Console.Write(
-				"-----------------------------\n" +
-                "TOTAL:".PadRight(20) + Convert.ToString(products.Sum(product => product.Price)) + "\n" +
-				"=============================\n");
+			Console.Write("------------------------------\n");
+			Console.Write($"TOTAL:{products.Sum(product => product.Price), 24:N2}\n");
+			Console.Write("==============================\n");
 		}
 	}
 }

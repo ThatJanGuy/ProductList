@@ -21,21 +21,11 @@ namespace Checkpoint2_ProductList
             MenuItems.Add(new MenuItem(returnString, text, menuChar, priority));
         }
 
-        public string ShowMenu(char style = 'p', char order = 'a') 
+        public string ShowMenu()
         {
-            /* Styles:
-             * u: unordered
-             * p: ordered by priority
-             * t: ordered by text
-             * 
-             * Order:
-             * a: ascending
-             * b: descending
-             */
+            List<MenuItem> outputList = MenuItems.OrderBy(i => i.priority).ToList();
 
-            List<MenuItem> outputList = MenuItems.If(true).OrderBy(i => i.priority).ToList();
-
-            foreach(MenuItem item in outputList)
+            foreach (MenuItem item in outputList)
             {
                 Console.WriteLine(" > {0} ({1})", item.text, item.menuChar);
             }
